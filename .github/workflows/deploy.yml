@@ -26,12 +26,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build static files
         run: | 
-          npx install
-          npx parcel build
+          npm ci
+          npm run build
         
 
       - name: Upload artifact

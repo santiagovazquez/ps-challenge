@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSceneData } from "./hooks";
 import { Canvas } from '@react-three/fiber';
-import Cuboid from './Cuboid';
+import Cuboid from '../components/Cuboid';
 import { OrbitControls } from '@react-three/drei';
-import Points from './Points';
+import Points from '../components/Points/Points';
 
 function App() {
     const { data, loaded } = useSceneData();

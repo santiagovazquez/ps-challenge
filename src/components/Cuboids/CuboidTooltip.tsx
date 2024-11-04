@@ -1,4 +1,4 @@
-import styles from './cuboid-tooltip.module.css';
+import * as css from './cuboid-tooltip.module.css';
 import { ReactNode } from "react";
 
 function TooltipItem({ label, value }: { label: string; value: ReactNode }) {
@@ -10,7 +10,7 @@ function TooltipItem({ label, value }: { label: string; value: ReactNode }) {
 
 function CuboidTooltip({ data }) {
     if (!data) return null;
-    return <div className={styles.tooltip}>
+    return <div className={css.tooltip}>
         <h3>Object properties</h3>
         <TooltipItem label="Label" value={data.label} />
         <TooltipItem label="Uuid" value={data.uuid} />

@@ -1,4 +1,4 @@
-import React, { PropsWithoutRef, useRef, useState } from 'react'
+import React, {PropsWithoutRef, useRef, useState} from 'react'
 import * as THREE from 'three'
 
 type CuboidData = {

@@ -11,7 +11,6 @@ type Props = {
 }
 
 function Points({ data }: Props) {
-    // @ts-expect-error
     const CircleImg = useLoader(THREE.TextureLoader, circleImg);
     const vertices = [];
 
@@ -31,7 +30,6 @@ function Points({ data }: Props) {
             />
         </bufferGeometry>
         <pointsMaterial
-            // @ts-expect-error
             map={CircleImg}
             color={0x00aaff}
             size={0.1}

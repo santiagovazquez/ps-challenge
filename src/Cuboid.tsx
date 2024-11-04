@@ -10,6 +10,7 @@ type CuboidData = {
     'position.x': number;
     'position.y': number;
     'position.z': number;
+    yaw: number;
 }
 
 type Props = PropsWithoutRef<{
@@ -17,13 +18,14 @@ type Props = PropsWithoutRef<{
 }>;
 
 function Cuboid({ data }: Props) {
-    const meshRef = useRef<THREE.Mesh>(null!)
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
+    const meshRef = useRef<THREE.Mesh>(null!);
+    const [hovered, setHover] = useState(false);
+    const [active, setActive] = useState(false);
 
     return (
         <mesh
             position={[data['position.x'], data['position.y'], data['position.z']]}
+            rotation={[0, 0, data.yaw]}
             ref={meshRef}
             onClick={(event) => setActive(!active)}
             onPointerOver={(event) => setHover(true)}

@@ -1,0 +1,30 @@
+.timelineToolbar {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    gap: 10px;
+    justify-content: center;
+}
+
+.framesContainer {
+    display: flex;
+    gap: 4px;
+}
+
+.button {
+
+}
+
+.paused {
+
+}
+
+.frame {
+    background: white;
+    border-color: #82868b;
+    height: 20px;
+    width: 8px;
+    border-radius: 2px;
+}

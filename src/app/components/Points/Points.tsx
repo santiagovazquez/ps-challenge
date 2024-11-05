@@ -1,12 +1,11 @@
 import * as THREE from 'three';
 import { useLoader } from "@react-three/fiber";
-import circleImg from "../../textures/circle.png";
-import {usePointPositionAndColors} from "./hooks";
-
-type PointData = [number, number, number];
+import circleImg from "../../../textures/circle.png";
+import { usePointPositionAndColors } from "./hooks";
+import { FrameData } from '../../types';
 
 type Props = {
-    data: PointData[];
+    data: FrameData;
 }
 
 function Points({ data }: Props) {

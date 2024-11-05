@@ -1,0 +1,35 @@
+.tooltip {
+    background: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0px 6px 12px -3px #25292e0a, 0px 6px 18px 0px #25292e1f;
+    border-color: #d1d9e0;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 16px;
+    color: #1F2328;
+    font-size: 14px;
+}
+
+.tooltipTitle {
+    font-size: 16px;
+    margin: 0;
+    padding-bottom: 12px;
+}
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tooltipLabel {
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.tooltipValue {
+    font-weight: 400;
+}

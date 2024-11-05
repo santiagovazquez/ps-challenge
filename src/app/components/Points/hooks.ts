@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { useMemo } from "react";
+import { FrameData } from "../../types";
 
 const LOWEST_POINT_COLOR = "#FF9D34";
 const HIGHEST_POINT_COLOR = '#A734FF';
@@ -8,17 +9,20 @@ const HIGHEST_POINT_COLOR = '#A734FF';
 // the bounding box and get max(zValues) and min(zValues)
 const zNormalization = (zValue) => Math.abs(zValue - 20)/25;
 
-export function usePointPositionAndColors(data) {
+export function usePointPositionAndColors(data: FrameData) {
     return useMemo(() => {
         const positions: number[] = [];
         const colors: number[] = [];
 
-        for (const point of data) {
+        for (const point of data.points) {
+            if (point.length !== 3) {
+                continue;
+            }
             positions.push(...point);
             const color = (new THREE.Color(HIGHEST_POINT_COLOR)).lerp(new THREE.Color(LOWEST_POINT_COLOR), zNormalization(point[2]));
             colors.push(...color.toArray());
         }
 
         return { positions: new Float32Array(positions), colors: new Float32Array(colors) };
-    }, data)
+    }, [data?.frame_id])
 }

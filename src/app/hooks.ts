@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react';
+import { fetchFrame } from "./api";
+import { FrameData } from './types';
 
-export function useSceneData() {
+export function useSceneData(frame?: number): { loaded: boolean; data?: FrameData; error: boolean } {
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState<FrameData | undefined>();
 
     useEffect(() => {
-        fetch("https://static.scale.com/uploads/pandaset-challenge/frame_00.json")
-            .then((res) => {
-                if (!res.ok || res.status < 200 || res.status > 299) {
-                    throw new Error('Failed to fetch file from server');
-                }
-                return res.json();
-            })
+        fetchFrame(frame || 0)
             .then((json) => {
                 setData(json);
                 setError(false);
@@ -22,7 +18,7 @@ export function useSceneData() {
                 setError(true);
                 setLoaded(true);
             });
-    }, []);
+    }, [frame]);
 
     return {
         loaded,

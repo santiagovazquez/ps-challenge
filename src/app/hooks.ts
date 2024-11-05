@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchFrame } from "./api";
 import { FrameData } from './types';
+import { useSearchParams } from "react-router-dom";
 
 export function useSceneData(frame?: number): { loaded: boolean; data?: FrameData; error: boolean } {
     const [loaded, setLoaded] = useState(false);
@@ -25,4 +26,10 @@ export function useSceneData(frame?: number): { loaded: boolean; data?: FrameDat
         data,
         error,
     };
+}
+
+export function useCurrentFrame() {
+    const [query] = useSearchParams();
+    const frame = query.get('frame') || '0';
+    return parseInt(frame, 10);
 }

@@ -4,8 +4,8 @@ import { OrbitControls } from "@react-three/drei";
 import Cuboids from "./Cuboids/Cuboids";
 import Points from "./Points/Points";
 import CuboidTooltip from "./Cuboids/CuboidTooltip";
-import {CuboidData, FrameData} from "../types";
-// import TimelineToolbar from "./TimelineToolbar/TimelineToolbar";
+import { CuboidData, FrameData } from "../types";
+import TimelineToolbar from "./TimelineToolbar/TimelineToolbar";
 
 function Scene({ data }: { data: FrameData }) {
     const [selectedCuboid, setSeletedCuboid] = useState<CuboidData | null>(null);
@@ -18,11 +18,11 @@ function Scene({ data }: { data: FrameData }) {
                     minPolarAngle={Math.PI / 2}
                     maxPolarAngle={Math.PI}
                 />
-                <Points data={data} />
-                <Cuboids data={data.cuboids} onHover={(selected) => setSeletedCuboid(selected)}/>
+                <Points data={data}/>
+                <Cuboids data={data?.cuboids || []} onHover={(selected) => setSeletedCuboid(selected)}/>
             </Canvas>
-            { !!selectedCuboid && <CuboidTooltip data={selectedCuboid} /> }
-            {/*<TimelineToolbar />*/}
+            {!!selectedCuboid && <CuboidTooltip data={selectedCuboid}/>}
+            <TimelineToolbar/>
         </>
     )
 }

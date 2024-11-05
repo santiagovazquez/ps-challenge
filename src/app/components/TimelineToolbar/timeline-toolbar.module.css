@@ -23,8 +23,12 @@
 
 .frame {
     background: white;
-    border-color: #82868b;
+    border: 1px solid #82868b;
     height: 20px;
     width: 8px;
     border-radius: 2px;
+}
+
+.activeFrame {
+    background: #F57376;
 }

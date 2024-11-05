@@ -1,34 +1,21 @@
-import * as THREE from 'three';
-import { useLoader } from "@react-three/fiber";
+import { useRef } from 'react';
 import circleImg from "../../../textures/circle.png";
-import { usePointPositionAndColors } from "./hooks";
+import { useRecreateGeometryOnDataChange } from "./hooks";
 import { FrameData } from '../../types';
+import { useTexture } from '@react-three/drei';
+import { ThreeElements } from "@react-three/fiber";
 
 type Props = {
     data: FrameData;
 }
 
-function Points({ data }: Props) {
-    const CircleImg = useLoader(THREE.TextureLoader, circleImg);
-    const { colors, positions } = usePointPositionAndColors(data);
+function PointsComponent({ data }: Props) {
+    const CircleImg = useTexture(circleImg);
+    const pointsRef = useRef<ThreeElements['points']>(null);
 
-    return <points>
-        <bufferGeometry attach="geometry">
-            <bufferAttribute
-                attach='attributes-position'
-                array={positions}
-                count={positions.length / 3}
-                itemSize={3}
-                usage={THREE.DynamicDrawUsage}
-            />
-            <bufferAttribute
-                attach='attributes-color'
-                count={colors.length / 3}
-                array={colors}
-                itemSize={3}
-                usage={THREE.DynamicDrawUsage}
-            />
-        </bufferGeometry>
+    useRecreateGeometryOnDataChange(pointsRef, data);
+
+    return <points ref={pointsRef}>
         <pointsMaterial
             attach="material"
             vertexColors
@@ -40,4 +27,4 @@ function Points({ data }: Props) {
     </points>;
 }
 
-export default Points;
+export default PointsComponent;

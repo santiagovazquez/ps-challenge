@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSceneData } from "./hooks";
+import { useCurrentFrame, useSceneData } from "./hooks";
 import Scene from './components/Scene';
-import { useSearchParams } from 'react-router-dom';
 
 function App() {
-    const [query] = useSearchParams();
-    const frame = query.get('frame');
-    const { data, loaded, error } = useSceneData(frame ? parseInt(frame) : undefined);
+    const frame = useCurrentFrame();
+    const { data, loaded, error } = useSceneData(frame);
 
     if (!loaded || !data) return <div>Loading...</div>;
 

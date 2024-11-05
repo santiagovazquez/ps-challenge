@@ -1,15 +1,15 @@
 import { useRef } from 'react';
+import { useTexture } from '@react-three/drei';
+import type { ThreeElements } from "@react-three/fiber";
 import circleImg from "../../../textures/circle.png";
 import { useRecreateGeometryOnDataChange } from "./hooks";
-import { FrameData } from '../../types';
-import { useTexture } from '@react-three/drei';
-import { ThreeElements } from "@react-three/fiber";
+import type { FrameData } from '../../types';
 
 type Props = {
     data: FrameData;
 }
 
-function PointsComponent({ data }: Props) {
+function Points({ data }: Props) {
     const CircleImg = useTexture(circleImg);
     const pointsRef = useRef<ThreeElements['points']>(null);
 
@@ -27,4 +27,4 @@ function PointsComponent({ data }: Props) {
     </points>;
 }
 
-export default PointsComponent;
+export default Points;

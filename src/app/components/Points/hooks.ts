@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { useEffect } from "react";
-import { FrameData } from "../../types";
-import { ThreeElements } from "@react-three/fiber";
+import type { FrameData } from "../../types";
+import type { ThreeElements } from "@react-three/fiber";
 
 const LOWEST_POINT_COLOR = "#FF9D34";
 const HIGHEST_POINT_COLOR = '#A734FF';
